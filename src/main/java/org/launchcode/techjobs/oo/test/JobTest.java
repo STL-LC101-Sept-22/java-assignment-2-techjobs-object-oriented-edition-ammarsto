@@ -39,7 +39,7 @@ public class JobTest {
     public void testJobsForEquality() {
         Job testJob1 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality Control"), new CoreCompetency("Persistence"));
         Job testJob2 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality Control"), new CoreCompetency("Persistence"));
-        assertNotEquals(testJob1,testJob2);
+        assertFalse(testJob1.equals(testJob2));
     }
 
 }
