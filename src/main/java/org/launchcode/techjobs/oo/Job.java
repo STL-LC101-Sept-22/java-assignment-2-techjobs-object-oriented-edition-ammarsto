@@ -12,6 +12,12 @@ public class Job {
     private Location location;
     private PositionType positionType;
 
+    // TODO: Add custom equals and hashCode methods. Consider two Job objects "equal" when their id fields
+    //  match.
+
+    // TODO: Add getters for each field EXCEPT nextId. Add setters for each field EXCEPT nextID
+    //  and id.
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -23,6 +29,29 @@ public class Job {
     @Override
     public int hashCode() {
         return Objects.hash(id);
+    }
+
+    public String toString() {
+        if (this.getName().toString().length() < 1) {
+            this.setName("Data not available");
+        }
+        if (this.getEmployer().toString().length() < 1) {
+            Employer noEmployerData = new Employer("Data not available");
+            this.setEmployer(noEmployerData);
+        }
+        if(this.getLocation().toString().length() < 1) {
+            Location noLocationData = new Location("Data not available");
+            this.setLocation(noLocationData);
+        }
+        if(this.getPositionType().toString().length() < 1) {
+            PositionType noPositionData = new PositionType("Data not available");
+            this.setPositionType(noPositionData);
+        }
+        if(this.getCoreCompetency().toString().length() < 1) {
+            CoreCompetency noCoreData = new CoreCompetency("Data not available");
+            this.setCoreCompetency(noCoreData);
+        }
+        return "\nID: " + this.getId() + "\nName: " + this.getName() + "\nEmployer: " + this.getEmployer() + "\nLocation: " + this.getLocation() + "\nPosition Type: " + this.getPositionType() + "\nCore Competency: " + this.getCoreCompetency() + "\n";
     }
 
     public int getId() {
@@ -89,9 +118,4 @@ public class Job {
         this.coreCompetency = coreCompetency;
     }
 
-    // TODO: Add custom equals and hashCode methods. Consider two Job objects "equal" when their id fields
-    //  match.
-
-    // TODO: Add getters for each field EXCEPT nextId. Add setters for each field EXCEPT nextID
-    //  and id.
 }
